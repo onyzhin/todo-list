@@ -1,0 +1,17 @@
+<app-todo-create (create)="createTodoItem($event)"></app-todo-create>
+
+<hr>
+
+<ng-container *ngFor="let item of list$ | async">
+  <app-todo-item [item]="item" (statusChanged)="updateTodoItem($event, item)"></app-todo-item>
+</ng-container>
+
+<hr>
+
+<app-counter [quantity]="quantity$ | async"></app-counter>
+
+<hr>
+
+<pre>{{
+  list$ | async | json
+}}</pre>
